@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voter Verification System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="min-h-screen flex flex-col justify-between bg-[#f3f7fa] text-slate-800 font-sans overflow-y-auto">
+    <!-- Navbar -->
+    <header class="w-full bg-white shadow-sm px-10 py-4 flex items-center justify-between sticky top-0 z-50">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-check-to-slot text-[#238a4b] text-xl"></i>
+        <h3 class="text-lg font-bold max-md:text-sm text-slate-900">Voter Verification System</h3>
+      </div>
+      <div class="flex items-center gap-2.5 text-sm text-slate-600 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-200">
+        <i class="fa-solid fa-shield-halved text-[#238a4b]"></i>
+        <p class="flex items-center gap-2 m-0 font-medium flex-wrap">
+          Secure
+          <span class="w-2 h-2 bg-[#238a4b] rounded-full inline-block animate-pulse"></span>
+          Transparent
+          <span class="w-2 h-2 bg-[#238a4b] rounded-full inline-block animate-pulse"></span>
+          Reliable
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex justify-center px-6 py-12 w-full max-w-5xl mx-auto flex-grow items-center">
+      <div class="bg-white rounded-3xl shadow-sm border border-slate-200 w-full flex flex-col lg:flex-row overflow-hidden">
+        <!-- Left Side: Form Section -->
+        <div class="p-8 lg:p-10 w-full lg:w-[55%] border-b lg:border-b-0 lg:border-r border-slate-100">
+          <div class="mb-5">
+            <h3 class="text-2xl font-bold text-slate-900 mb-1">Check Your Eligibility</h3>
+            <p class="text-sm text-slate-500">Please enter your details below to verify if you are eligible to vote.</p>
+          </div>
+
+          <form id="form" class="flex flex-col gap-4">
+            <!-- Full Name -->
+            <div>
+              <label for="userName" class="block text-sm font-semibold text-slate-700 mb-1.5 ml-[3.7rem]">Full Name</label>
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-emerald-50 text-[#238a4b] rounded-xl flex items-center justify-center shrink-0 text-base">
+                  <i class="fa-regular fa-user"></i>
+                </div>
+                <input
+                  type="text"
+                  id="userName"
+                  placeholder="Ali Raza"
+                  class="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 outline-none text-slate-800 text-sm focus:border-[#238a4b] focus:ring-1 focus:ring-emerald-100 transition-all"
+                />
+              </div>
+              <p id="userError" class="text-sm text-red-500 mt-1 ml-[3.7rem] hidden">Please enter your full name.</p>
+            </div>
+
+            <!-- Email Address -->
+            <div>
+              <label for="userEmail" class="block text-sm font-semibold text-slate-700 mb-1.5 ml-[3.7rem]">Email Address</label>
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-emerald-50 text-[#238a4b] rounded-xl flex items-center justify-center shrink-0 text-base">
+                  <i class="fa-regular fa-envelope"></i>
+                </div>
+                <input
+                  type="email"
+                  id="userEmail"
+                  placeholder="aliraza@gmail.com"
+                  class="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 outline-none text-slate-800 text-sm focus:border-[#238a4b] focus:ring-1 focus:ring-emerald-100 transition-all"
+                />
+              </div>
+              <p id="emailError" class="text-sm text-red-500 mt-1 ml-[3.7rem] hidden">Please enter a valid email address.</p>
+            </div>
+
+            <!-- CNIC Number -->
+            <div>
+              <label for="userCnic" class="block text-sm font-semibold text-slate-700 mb-1.5 ml-[3.7rem]">CNIC Number</label>
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-emerald-50 text-[#238a4b] rounded-xl flex items-center justify-center shrink-0 text-base">
+                  <i class="fa-regular fa-credit-card"></i>
+                </div>
+                <input
+                  type="text"
+                  id="userCnic"
+                  maxlength="15"
+                  placeholder="42101-1234567-1"
+                  class="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 outline-none text-slate-800 text-sm focus:border-[#238a4b] focus:ring-1 focus:ring-emerald-100 transition-all"
+                />
+              </div>
+              <span id="cnicText" class="text-xs text-slate-400 mt-1 ml-14 block">Enter your 13-digit CNIC number</span>
+              <p id="cnicError" class="text-sm text-red-500 mt-1 ml-[3.7rem] hidden">Please enter complete 13-digit CNIC.</p>
+            </div>
+
+            <!-- Age -->
+            <div>
+              <label for="userAge" class="block text-sm font-semibold text-slate-700 mb-1.5 ml-[3.7rem]">Age</label>
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-emerald-50 text-[#238a4b] rounded-xl flex items-center justify-center shrink-0 text-base">
+                  <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <input
+                  type="number"
+                  id="userAge"
+                  placeholder="18"
+                  class="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 outline-none text-slate-800 text-sm focus:border-[#238a4b] focus:ring-1 focus:ring-emerald-100 transition-all"
+                />
+              </div>
+              <p id="ageError" class="text-sm text-red-500 mt-1 ml-[3.7rem] hidden">Please enter a valid age.</p>
+            </div>
+
+            <!-- Check Eligibility Button -->
+            <button
+              type="submit"
+              class="w-full bg-[#238a4b] hover:bg-[#1d7a40] text-white font-semibold py-3.5 px-6 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 text-sm mt-2"
+            >
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+              Check Eligibility
+            </button>
+          </form>
+
+          <!-- Eligibility Criteria Note Box -->
+          <div class="mt-5 p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-start gap-3">
+            <div class="text-[#238a4b] text-base mt-0.5">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-0.5">Eligibility Criteria</h4>
+              <p class="text-xs text-slate-500 leading-relaxed">You must be at least 18 years old to be eligible to vote in elections.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Results & Status Section -->
+        <div class="p-8 lg:p-10 w-full lg:w-[45%] flex flex-col items-center text-center justify-center bg-slate-50/30">
+          <!-- 1. Default Box -->
+          <div id="defaultBox" class="flex flex-col items-center">
+            <div
+              class="w-20 h-20 bg-emerald-50 text-[#238a4b] rounded-full flex items-center justify-center text-3xl mb-4 shadow-sm border border-emerald-100"
+            >
+              <i class="fa-solid fa-user-check"></i>
+            </div>
+            <h2 class="text-lg font-bold text-slate-900 mb-1.5">Ready to Verify</h2>
+            <p class="text-sm text-slate-500 max-w-xs">Fill out the form to check your voting eligibility.</p>
+          </div>
+
+          <!-- 2. Eligible Box -->
+          <div id="eligibleBox" class="hidden flex flex-col items-center">
+            <div class="w-20 h-20 bg-emerald-100 text-[#238a4b] rounded-full flex items-center justify-center text-3xl mb-4 shadow-sm">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 class="text-lg font-bold text-emerald-700 mb-1.5">You are Eligible!</h2>
+            <p class="text-sm text-slate-500 max-w-xs">Congratulations, you meet all the criteria to cast your vote.</p>
+          </div>
+
+          <!-- 3. Not Eligible Box -->
+          <div id="notEligibleBox" class="hidden flex flex-col items-center">
+            <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-3xl mb-4 shadow-sm">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <h2 class="text-lg font-bold text-red-600 mb-1.5">Not Eligible</h2>
+            <p class="text-sm text-slate-500 max-w-xs">Sorry, you must be at least 18 years old to vote.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-white border-t border-slate-200 py-4 text-center text-sm text-slate-500">
+      <p>© 2026 Voter Verification System. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
